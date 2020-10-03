@@ -59,6 +59,13 @@ if ($post_item['post_image'] == false && origami_get_other_thumbnail($post)) {
             <?php endforeach; ?>
           </ul>
         </div>
+        </div>   
+        <?php   
+            if ((get_the_modified_time('Y')*365+get_the_modified_time('z')) > (get_the_time('Y')*365+get_the_time('z'))) :  
+              echo '<div class="card-subtitle text-gray">本文最后于 • <time>';  
+              the_modified_time('Y年n月j日');
+              echo '</time>• 编辑</div>';
+        endif;?>
       </div>
       <article <?php post_class('s-content'); ?> id="post-<?php the_ID(); ?>">
         <?php the_content(); ?>
